@@ -1,2 +1,2 @@
 # InterviewGame
-https://jeanetsai.github.io/InterviewGame/
+https://jeanetsai.github.io/InterviewGame/index.html
