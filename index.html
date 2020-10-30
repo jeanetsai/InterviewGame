@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Interview Game</title>
+	    <script type="text/javascript" src="jquery-1.11.1.js"></script>
+  </head>
+
+  <body>
+
+    <div id="example" style="width:800px; margin:0 auto;">
+      
+    </div>
+	
+	  <script type="text/javascript">
+        $("document").ready(function() {
+		getContent();
+        });
+        
+        function getContent() {
+            $.ajax("interviewquestions.txt", 
+                   { success: setContent, type: "GET", dataType: "text" });
+				   //console.log("success");
+        }//type: 呼叫自訂的setContent函式 "GET"/"POST" 
+        
+		//data = sampletextcontent.txt
+        function setContent(data, status, jqxhr) {
+            //$("#example").text(data);
+			//console.log(typeof(data));
+			//data is a string
+			var items = (data.split("\r\n"));
+			var item = items[Math.floor(Math.random() * items.length)];
+			document.getElementById("example").innerHTML="<h1>"+item+"</h1>";
+			//document.body.innerHTML="<h1>"+item+"</h1>";
+        }
+        
+    </script>
+
+  </body>
+</html>
