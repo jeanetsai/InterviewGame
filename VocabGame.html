@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Interview Game</title>
+	    <script type="text/javascript" src="jquery-1.11.1.js"></script>
+  </head>
+
+  <body>
+
+    <div id="example" style="width:600px; margin:0 auto; font-size:16px;">
+      
+    </div>
+	
+	  <script type="text/javascript">
+        $("document").ready(function() {
+		getContent();
+        });
+        
+        function getContent() {
+            $.ajax("vocab.txt", 
+                   { success: setContent, type: "GET", dataType: "text" });
+				   //console.log("success");
+        }//type: 呼叫自訂的setContent函式 "GET"/"POST" 
+        
+		
+        function setContent(data, status, jqxhr) {
+            //$("#example").text(data);
+			//console.log(typeof(data));
+			//data is a string
+			var items = (data.split("\r\n"));
+			shuffleArray(items);
+			var k=items.length;
+			var arr = [];
+			for (var ii = 0; ii < k; ii++) {
+			//console.log(items[ii]);
+			arr[ii] = items[ii];			
+			}
+			//var x = arr.toString();
+			var x = arr.join(" ");
+			
+			document.getElementById("example").innerText=x;
+			//document.getElementById("example").innerHTML="<p>"+item+"</p>";
+			
+			function shuffleArray(array) {
+				for (var i = array.length - 1; i > 0; i--) {
+					var j = Math.floor(Math.random() * (i + 1));
+					var temp = array[i];
+					array[i] = array[j];
+					array[j] = temp;
+				}
+}
+			//document.body.innerHTML="<h1>"+item+"</h1>";
+        }
+        
+    </script>
+
+  </body>
+</html>
